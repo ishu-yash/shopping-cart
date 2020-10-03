@@ -1,0 +1,22 @@
+.Body {
+  min-width: 64px !important;
+  max-width: 64px !important;
+  height: 100vh;
+}
+
+.menu-container {
+  margin-top: 12px;
+}
+
+.icon {
+  width: 2em;
+  height: 1.2em;
+}
+
+.icon_logout {
+  width: 2em;
+  height: 1.8em;
+  color: #fff;
+  margin-left: 16px;
+  margin-top: 450px;
+}

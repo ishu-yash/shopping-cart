@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import DashboardLazy from "./Container/Dashboard/Dashboard.lazy";
+import LoginLazy from "./Container/Login/Login.Lazy";
+import Logout from "./Component/Logout/Logout";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/dashboard" component={DashboardLazy} />
+        <Route path="/login" component={LoginLazy} />
+        <Route path="/logout" component={Logout} />
+        <Route path="/" exact>
+          <Redirect
+            to={
+              localStorage.getItem("login_token") ? "/dashboard/home" : "/login"
+            }
+          />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

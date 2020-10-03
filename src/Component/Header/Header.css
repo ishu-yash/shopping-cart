@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  padding-right: 96px;
+  padding-left: 12px;
+  height: 64px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.39);
+}
+
+.toggle {
+  width: 2em;
+  height: 1.6em;
+  cursor: pointer;
+}
