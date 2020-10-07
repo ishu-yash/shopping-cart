@@ -1,7 +1,11 @@
 .Body {
   min-width: 64px !important;
   max-width: 64px !important;
+  position: relative;
   height: 100vh;
+  top: 0;
+  background-color: rgb(199, 0, 61);
+  z-index: 1;
 }
 
 .menu-container {
@@ -9,6 +13,7 @@
 }
 
 .icon {
+  color: white;
   width: 2em;
   height: 1.2em;
 }
