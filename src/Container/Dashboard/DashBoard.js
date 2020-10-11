@@ -6,10 +6,12 @@ import Home from "../../Component/Home/Home";
 import { Route, useRouteMatch } from "react-router-dom";
 import Admin from "../../Component/Admin/Admin";
 import { Switch } from "react-router-dom";
-import rootSelector from "../../redux/selectors/modalSelector";
 import { connect } from "react-redux";
 import ModalComponent from "../../Component/ModalComponent";
-import { mapDispatchToProps } from "../../redux/maps/headerMap";
+import {
+  mapDispatchToProps,
+  mapStateToProps,
+} from "../../redux/maps/headerMap";
 import Cart from "../../Component/Cart/Cart";
 
 const { Content } = Layout;
@@ -26,10 +28,17 @@ const DashBoard = (props) => {
 
   const handleOk = (product) => {
     props.addToCart(product);
+    props.setCount({ value: 1, price: product.price });
   };
 
   const handleCancel = () => {
     props.setId(-1);
+  };
+
+  const checkDisable = () => {
+    if (props.id === -1) return false;
+    console.log("From DashBoard", props.check, props.id);
+    return props.check;
   };
   return (
     <Layout>
@@ -59,6 +68,7 @@ const DashBoard = (props) => {
             key="b2"
             type="primary"
             onClick={() => handleOk(props.product)}
+            disabled={checkDisable()}
           >
             Add to cart
           </Button>,
@@ -80,13 +90,6 @@ const DashBoard = (props) => {
       </Layout>
     </Layout>
   );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    id: state.setModalId.id,
-    product: rootSelector(state),
-  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

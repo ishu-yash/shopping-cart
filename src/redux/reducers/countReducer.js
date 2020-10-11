@@ -6,6 +6,8 @@ const initial = {
 
 const countReducer = (state = initial, action) => {
   switch (action.type) {
+    case actions.SET_COUNT:
+      return { ...state, count: state.count + action.payload };
     default:
       return state;
   }

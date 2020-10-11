@@ -6,6 +6,8 @@ const initial = {
 
 const totalReducer = (state = initial, action) => {
   switch (action.type) {
+    case actions.SET_TOTAL:
+      return { ...state, total: state.total + action.payload };
     default:
       return state;
   }

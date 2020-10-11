@@ -1,7 +1,22 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { mapCartDispatchToProps } from "../../../redux/maps/headerMap";
 
-function CartItem({ product }) {
+function CartItem({ product, ...props }) {
   const [count, setCount] = useState(1);
+
+  function* handleCount(val) {
+    yield props.setCount({
+      value: val,
+      price: val === 1 ? product.price : -1 * product.price,
+    });
+    yield setCount((count) => count + val);
+  }
+  const handleHandleCount = (val) => {
+    const func = handleCount(val);
+    func.next();
+    func.next();
+  };
   return (
     <div
       style={{
@@ -42,6 +57,7 @@ function CartItem({ product }) {
             textAlign: "center",
             border: "none",
           }}
+          onClick={() => handleHandleCount(-1)}
         >
           -
         </button>
@@ -55,6 +71,7 @@ function CartItem({ product }) {
             textAlign: "center",
             border: "none",
           }}
+          onClick={() => handleHandleCount(1)}
         >
           +
         </button>
@@ -63,4 +80,4 @@ function CartItem({ product }) {
   );
 }
 
-export default CartItem;
+export default connect(null, mapCartDispatchToProps)(CartItem);

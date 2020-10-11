@@ -11,7 +11,7 @@ function Header(props) {
     <div className="container">
       <div onClick={props.clicked}>
         <Badge
-          count={0}
+          count={props.count}
           showZero
           style={{ background: "#1890ff", border: "0px" }}
         >

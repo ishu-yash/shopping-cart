@@ -1,6 +1,13 @@
 import actions from "../actions/actions";
 import actionCreator from "../actions/actionCreator";
-import { takeLatest, all, put } from "redux-saga/effects";
+import {
+  takeLatest,
+  all,
+  put,
+  call,
+  take,
+  takeEvery,
+} from "redux-saga/effects";
 import data from "../../data";
 import Axios from "axios";
 
@@ -23,6 +30,24 @@ function* watchSaga() {
   yield takeLatest(actions.GET_IMAGES, workerSaga);
 }
 
+function* workerAddToCartSaga(action) {
+  yield put(actionCreator(actions.ADD_TO_CART, action.payload));
+}
+function* workerCountSaga(action) {
+  yield put(actionCreator(actions.SET_COUNT, action.payload.value));
+  yield put(actionCreator(actions.SET_TOTAL, action.payload.price));
+}
+
+function* watchAddToCartSaga() {
+  while (true) {
+    const action1 = yield take(actions.ASYNC_ADD_TO_CART);
+    yield call(workerAddToCartSaga, action1);
+  }
+}
+
+function* watchCountSaga() {
+  yield takeEvery(actions.ASYNC_SET_COUNT, workerCountSaga);
+}
 export default function* rootSaga() {
-  yield all([watchSaga()]);
+  yield all([watchSaga(), watchAddToCartSaga(), watchCountSaga()]);
 }

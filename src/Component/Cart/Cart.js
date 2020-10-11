@@ -8,7 +8,7 @@ import Icon from "../Icon";
 import * as Gi from "react-icons/gi";
 
 function Cart(props) {
-  console.log("from props", props.productInCart);
+  // console.log("from props", props.productInCart);
   return (
     <div>
       <Typography.Title level={3}>
@@ -22,7 +22,7 @@ function Cart(props) {
         <div className="total-container">
           <Typography.Title level={4}>Current Total -</Typography.Title>
           <Typography.Title level={4} style={{ marginBottom: "36px" }}>
-            {`$100.12`}
+            {`${props.total.toFixed(2)}`}
           </Typography.Title>
         </div>
       </div>
