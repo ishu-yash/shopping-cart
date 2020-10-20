@@ -23,7 +23,7 @@ function Header(props) {
       </Typography.Title>
       <div
         style={{
-          width: "120px",
+          width: "10rem",
           marginRight: "96px",
           textAlign: "center",
         }}
