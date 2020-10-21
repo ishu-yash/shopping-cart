@@ -14,7 +14,7 @@ export const cartSelector = createSelector(
   productIncart,
   getId,
   (products, id) => {
-    if (products.length === 0) return false;
+    if (products === undefined || products.length === 0) return false;
     const index = products.find((product) => product._id === id);
     // console.log("from cart selector", products, id, index);
     if (index === undefined) return false;

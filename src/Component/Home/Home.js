@@ -16,7 +16,7 @@ function Home({ setTitle, getImages, ...props }) {
   return (
     <div
       style={{
-        marginTop: "68px",
+        marginTop: "6.25rem",
       }}
     >
       <div

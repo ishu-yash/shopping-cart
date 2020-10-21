@@ -37,7 +37,9 @@ export const mapCartDispatchToProps = (dispatch) => {
 export const mapCartStateToProps = (state) => {
   return {
     productInCart: state.cart.productInCart,
+    orders: state.cart.orders,
     total: state.total.total,
+    count: state.count.count,
   };
 };
 

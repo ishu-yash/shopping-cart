@@ -27,7 +27,8 @@ const DashBoard = (props) => {
   };
 
   const handleOk = (product) => {
-    props.addToCart(product);
+    const data = { ...product, count: 1 };
+    props.addToCart(data);
     props.setCount({ value: 1, price: product.price });
   };
 
@@ -46,8 +47,8 @@ const DashBoard = (props) => {
       {
         <div
           style={{
-            minWidth: toggle ? "18rem" : "0rem",
-            width: toggle ? "18rem" : "0rem",
+            minWidth: toggle ? "24rem" : "0rem",
+            width: toggle ? "24rem" : "0rem",
             transition: "all 200ms ease",
             backgroundColor: "white",
             padding: toggle ? "2rem 1.5rem" : "0",

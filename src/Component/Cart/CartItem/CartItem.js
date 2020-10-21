@@ -1,22 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { mapCartDispatchToProps } from "../../../redux/maps/headerMap";
+import { useDispatch } from "react-redux";
+import actions from "../../../redux/actions/actions";
+import actionCreator from "../../../redux/actions/actionCreator";
 
 function CartItem({ product, ...props }) {
   const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
 
-  function* handleCount(val) {
-    yield props.setCount({
+  useEffect(() => {
+    dispatch(
+      actionCreator(actions.SET_CART_ITEM_COUNT, {
+        id: product._id,
+        count: count,
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
+
+  function handleCount(val) {
+    setCount((count) => count + val);
+    props.setCount({
       value: val,
       price: val === 1 ? product.price : -1 * product.price,
     });
-    yield setCount((count) => count + val);
   }
-  const handleHandleCount = (val) => {
-    const func = handleCount(val);
-    func.next();
-    func.next();
-  };
   return (
     <div
       style={{
@@ -57,7 +66,7 @@ function CartItem({ product, ...props }) {
             textAlign: "center",
             border: "none",
           }}
-          onClick={() => handleHandleCount(-1)}
+          onClick={() => handleCount(-1)}
         >
           -
         </button>
@@ -71,7 +80,7 @@ function CartItem({ product, ...props }) {
             textAlign: "center",
             border: "none",
           }}
-          onClick={() => handleHandleCount(1)}
+          onClick={() => handleCount(1)}
         >
           +
         </button>

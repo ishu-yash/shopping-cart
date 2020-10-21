@@ -48,6 +48,17 @@ function* watchAddToCartSaga() {
 function* watchCountSaga() {
   yield takeEvery(actions.ASYNC_SET_COUNT, workerCountSaga);
 }
+
+function* workerDeleteSaga(action) {
+  const id = "dress" + action.payload.id;
+  yield put(actionCreator(actions.DELETE_ITEM_FROM_ORDER, id));
+  yield put(actionCreator(actions.SET_TOTAL, -1 * action.payload.price));
+  yield put(actionCreator(actions.SET_COUNT, -1 * action.payload.count));
+}
+
+function* watchCartDeleteSaga() {
+  yield takeEvery(actions.ASYNC_DELETE_ITEM_FROM_CART, workerDeleteSaga);
+}
 export default function* rootSaga() {
   yield all([watchSaga(), watchAddToCartSaga(), watchCountSaga()]);
 }

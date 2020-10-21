@@ -1,0 +1,7 @@
+.total-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #1890ff;
+  border-radius: 4px;
+}
