@@ -7,6 +7,7 @@ import {
   call,
   take,
   takeEvery,
+  fork,
 } from "redux-saga/effects";
 import data from "../../data";
 import Axios from "axios";
@@ -50,15 +51,17 @@ function* watchCountSaga() {
 }
 
 function* workerDeleteSaga(action) {
-  const id = "dress" + action.payload.id;
-  yield put(actionCreator(actions.DELETE_ITEM_FROM_ORDER, id));
-  yield put(actionCreator(actions.SET_TOTAL, -1 * action.payload.price));
-  yield put(actionCreator(actions.SET_COUNT, -1 * action.payload.count));
+  yield put(actionCreator(actions.DELETE_ITEM_FROM_ORDER, action.payload.id));
 }
 
 function* watchCartDeleteSaga() {
-  yield takeEvery(actions.ASYNC_DELETE_ITEM_FROM_CART, workerDeleteSaga);
+  yield takeLatest(actions.ASYNC_DELETE_ITEM_FROM_ORDER, workerDeleteSaga);
 }
 export default function* rootSaga() {
-  yield all([watchSaga(), watchAddToCartSaga(), watchCountSaga()]);
+  yield all([
+    fork(watchSaga),
+    fork(watchAddToCartSaga),
+    fork(watchCountSaga),
+    fork(watchCartDeleteSaga),
+  ]);
 }

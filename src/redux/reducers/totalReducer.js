@@ -7,7 +7,10 @@ const initial = {
 const totalReducer = (state = initial, action) => {
   switch (action.type) {
     case actions.SET_TOTAL:
-      return { ...state, total: state.total + action.payload };
+      return {
+        ...state,
+        total: action.payload === 0.0 ? 0.0 : state.total + action.payload,
+      };
     default:
       return state;
   }

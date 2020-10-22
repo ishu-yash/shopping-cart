@@ -47,8 +47,8 @@ const DashBoard = (props) => {
       {
         <div
           style={{
-            minWidth: toggle ? "24rem" : "0rem",
-            width: toggle ? "24rem" : "0rem",
+            minWidth: toggle ? "32rem" : "0rem",
+            width: toggle ? "32rem" : "0rem",
             transition: "all 200ms ease",
             backgroundColor: "white",
             padding: toggle ? "2rem 1.5rem" : "0",

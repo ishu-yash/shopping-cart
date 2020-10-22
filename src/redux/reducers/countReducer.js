@@ -7,7 +7,11 @@ const initial = {
 const countReducer = (state = initial, action) => {
   switch (action.type) {
     case actions.SET_COUNT:
-      return { ...state, count: state.count + action.payload };
+      const result = state.count + action.payload;
+      return {
+        ...state,
+        count: action.payload === 0 ? 0 : result < 0 ? 0 : result,
+      };
     default:
       return state;
   }

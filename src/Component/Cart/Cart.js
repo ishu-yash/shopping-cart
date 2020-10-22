@@ -23,6 +23,15 @@ function Cart(props) {
     };
     dispatch(actionCreator(actions.ADD_TO_ORDER, data));
   };
+
+  const handleEmptyCart = () => {
+    const data = {
+      value: 0,
+      price: 0.0,
+    };
+    dispatch(actionCreator(actions.RESET_CART));
+    dispatch(actionCreator(actions.ASYNC_SET_COUNT, data));
+  };
   return (
     <div>
       <Typography.Title
@@ -37,12 +46,32 @@ function Cart(props) {
           <Icon Value={Gi.GiShoppingCart} styles="cart-icon" />
           My Cart
         </span>
-        <Button type="primary" danger onClick={handleOnClick}>
-          Order
-        </Button>
+        <div style={{ display: "flex" }}>
+          <Button
+            type="primary"
+            danger
+            onClick={handleOnClick}
+            disabled={props.productInCart.length === 0}
+          >
+            Order
+          </Button>
+          <Button
+            type="primary"
+            danger
+            onClick={handleEmptyCart}
+            style={{ marginLeft: "0.5rem" }}
+            disabled={props.productInCart?.length === 0}
+          >
+            Empty Cart
+          </Button>
+        </div>
       </Typography.Title>
       <Divider className="divider" />
-      <TotalContainer total={props.total} isCart={true} />
+      <TotalContainer
+        total={props.total}
+        isCart={true}
+        style={{ width: "18rem" }}
+      />
       <div
         style={{
           height: "24rem",

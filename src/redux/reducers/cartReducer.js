@@ -32,6 +32,16 @@ const cartReducer = (state = initial, action) => {
         ...state,
         orders: state.orders.concat(action.payload),
       };
+    case actions.DELETE_ITEM_FROM_ORDER:
+      return {
+        ...state,
+        orders: state.orders.filter((order) => order.id !== action.payload),
+      };
+    case actions.RESET_CART:
+      return {
+        ...state,
+        productInCart: [],
+      };
     default:
       return state;
   }
