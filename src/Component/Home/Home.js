@@ -11,8 +11,7 @@ function Home({ setTitle, getImages, ...props }) {
   useEffect(() => {
     getImages();
   }, [getImages]);
-  const list =
-    props.filteredList.length > 0 ? props.filteredList : props.images;
+  const list = props.filteredList;
   return (
     <div
       style={{
@@ -21,7 +20,7 @@ function Home({ setTitle, getImages, ...props }) {
     >
       <div
         style={{
-          height: "600px",
+          height: "32rem",
           display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap",
@@ -30,9 +29,11 @@ function Home({ setTitle, getImages, ...props }) {
           padding: "12px",
         }}
       >
-        {list.map((cur) => (
-          <ItemCard id={cur._id} product={cur} key={cur._id} />
-        ))}
+        {list.length > 0
+          ? list.map((cur) => (
+              <ItemCard id={cur._id} product={cur} key={cur._id} />
+            ))
+          : "Nothing to show!"}
       </div>
     </div>
   );

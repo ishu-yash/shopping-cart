@@ -3,14 +3,18 @@ import { Layout, Menu, Tooltip } from "antd";
 import Icon from "../Icon";
 import { NavLink } from "react-router-dom";
 import * as RiIcon from "react-icons/ri";
+import * as Fc from "react-icons/fc";
 import "./SideBar.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import actions from "../../redux/actions/actions";
 import actionCreator from "../../redux/actions/actionCreator";
 
 const { Sider } = Layout;
 
 function SideBar({ routes, ...props }) {
+  const filtersApplied = useSelector(
+    (state) => state.setImages.filtersApplied || false
+  );
   return (
     <Sider className="Body">
       <div className="menu-container">
@@ -88,6 +92,13 @@ function SideBar({ routes, ...props }) {
               </Menu.SubMenu>
             </Menu.SubMenu>
           </Menu.SubMenu>
+          {filtersApplied && (
+            <Menu.Item key="13" onClick={() => props.clearFilters()}>
+              <Tooltip placement="right" title="Clear Filters">
+                <Icon Value={Fc.FcClearFilters} styles="icon" />
+              </Tooltip>
+            </Menu.Item>
+          )}
         </Menu>
       </div>
       <div>
@@ -106,6 +117,7 @@ const mapSiderDispatchToProps = (dispatch) => {
     sortAsc: (val) => dispatch(actionCreator(actions.SORT_ASC, val)),
     sortDesc: (val) => dispatch(actionCreator(actions.SORT_DESC, val)),
     filter: (val) => dispatch(actionCreator(actions.FILTER_BY_SIZE, val)),
+    clearFilters: () => dispatch(actionCreator(actions.CLEAR_FILTERS)),
   };
 };
 export default connect(null, mapSiderDispatchToProps)(SideBar);

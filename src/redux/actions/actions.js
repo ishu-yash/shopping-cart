@@ -22,6 +22,7 @@ const actions = {
   DELETE_ITEM_FROM_ORDER: "DELETE_ITEM_FROM_ORDER",
   RESET_COUNT: "RESET_COUNT",
   RESET_TOTAL: "RESET_TOTAL",
+  CLEAR_FILTERS: "clearFilters",
 };
 
 export default actions;
