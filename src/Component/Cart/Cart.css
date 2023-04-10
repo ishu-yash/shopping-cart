@@ -1,0 +1,14 @@
+.cart::-webkit-scrollbar {
+  display: none;
+}
+
+.cart-icon {
+  font-weight: 2000;
+  font-size: 3rem;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
