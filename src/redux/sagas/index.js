@@ -13,7 +13,7 @@ import data from "../../data";
 import Axios from "axios";
 
 const BaseUrl =
-  "https://api.unsplash.com/topics/fashion/photos?client_id=rCkcRB4aESzoCIuIyoMdT-AB7FbjPZBgIxaTk5R0jeo";
+  "https://api.unsplash.com/topics/wallpapers/photos?client_id=3xU_7pGzO3QcBLfZUpEm9aY0iNh_ybuBYH-1k7QSlaU";
 function* workerSaga() {
   try {
     const response = yield Axios.get(BaseUrl);

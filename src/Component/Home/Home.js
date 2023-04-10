@@ -20,7 +20,6 @@ function Home({ setTitle, getImages, ...props }) {
     >
       <div
         style={{
-          height: "32rem",
           display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap",
