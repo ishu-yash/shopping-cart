@@ -1,18 +1,17 @@
+import { Button, Layout, Modal } from "antd";
 import React, { useState } from "react";
-import { Layout, Modal, Button } from "antd";
-import SideBar from "../../Component/Sidebar/SideBar";
+import { connect } from "react-redux";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
+import Admin from "../../Component/Admin/Admin";
+import Cart from "../../Component/Cart/Cart";
 import Header from "../../Component/Header/Header";
 import Home from "../../Component/Home/Home";
-import { Route, useRouteMatch } from "react-router-dom";
-import Admin from "../../Component/Admin/Admin";
-import { Switch } from "react-router-dom";
-import { connect } from "react-redux";
 import ModalComponent from "../../Component/ModalComponent";
+import SideBar from "../../Component/Sidebar/SideBar";
 import {
   mapDispatchToProps,
   mapStateToProps,
 } from "../../redux/maps/headerMap";
-import Cart from "../../Component/Cart/Cart";
 
 const { Content } = Layout;
 

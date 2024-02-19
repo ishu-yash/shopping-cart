@@ -1,15 +1,14 @@
+import { Button, Divider, Typography } from "antd";
 import React from "react";
-import { connect } from "react-redux";
-import { mapCartStateToProps } from "../../redux/maps/headerMap";
-import CartItem from "./CartItem/CartItem";
-import "./Cart.css";
-import { Divider, Typography, Button } from "antd";
-import Icon from "../Icon";
 import * as Gi from "react-icons/gi";
-import TotalContainer from "../TotalContainer/TotalContainer";
-import { useDispatch } from "react-redux";
-import actions from "../../redux/actions/actions";
+import { connect, useDispatch } from "react-redux";
 import actionCreator from "../../redux/actions/actionCreator";
+import actions from "../../redux/actions/actions";
+import { mapCartStateToProps } from "../../redux/maps/headerMap";
+import Icon from "../Icon";
+import TotalContainer from "../TotalContainer/TotalContainer";
+import "./Cart.css";
+import CartItem from "./CartItem/CartItem";
 
 function Cart(props) {
   // console.log("from props", props.productInCart);
@@ -74,7 +73,7 @@ function Cart(props) {
       />
       <div
         style={{
-          height: "24rem",
+          height: "60%",
           overflowY: "scroll",
           display: "flex",
           flexFlow: "column",

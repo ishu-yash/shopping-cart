@@ -1,5 +1,5 @@
+import { Button, Card, Form, Input, Typography } from "antd";
 import React, { useState } from "react";
-import { Card, Form, Input, Button, Typography } from "antd";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -21,9 +21,10 @@ const Login = (props) => {
     <div
       style={{
         width: "100%",
-        height: "657px",
+        height: "100vh",
         background: "gray",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}

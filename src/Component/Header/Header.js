@@ -1,10 +1,10 @@
+import { Badge } from "antd";
 import React from "react";
-import { Typography, Badge } from "antd";
-import "./Header.css";
+import * as Ri from "react-icons/ri";
 import { connect } from "react-redux";
 import { mapHeaderStateToProps } from "../../redux/maps/headerMap";
 import Icon from "../Icon";
-import * as Ri from "react-icons/ri";
+import "./Header.css";
 
 function Header(props) {
   return (
@@ -18,19 +18,11 @@ function Header(props) {
           <Icon Value={Ri.RiShoppingCart2Fill} styles="toggle" />
         </Badge>
       </div>
-      <Typography.Title level={2} style={{ color: "white" }}>
+      <div style={{ color: "white", fontSize: "2rem", fontWeight: "bold" }}>
         Shopping Cart
-      </Typography.Title>
-      <div
-        style={{
-          width: "10rem",
-          marginRight: "96px",
-          textAlign: "center",
-        }}
-      >
-        <Typography.Title level={3} style={{ color: "white" }}>
-          {props.title}
-        </Typography.Title>
+      </div>
+      <div style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}>
+        {props.title}
       </div>
     </div>
   );

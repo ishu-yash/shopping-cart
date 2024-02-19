@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { mapHeaderDispatchToProps } from "../../redux/maps/headerMap";
 import { connect } from "react-redux";
+import { mapHeaderDispatchToProps } from "../../redux/maps/headerMap";
 import ItemCard from "./ItemCard/ItemCard";
 
 function Home({ setTitle, getImages, ...props }) {
@@ -13,19 +13,18 @@ function Home({ setTitle, getImages, ...props }) {
   }, [getImages]);
   const list = props.filteredList;
   return (
-    <div
-      style={{
-        marginTop: "6.25rem",
-      }}
-    >
+    <div>
       <div
         style={{
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "center",
+          gap: "2rem",
+          height: "100vh",
           flexWrap: "wrap",
-          overflowY: "scroll",
+          overflowY: "auto",
           overflowX: "hidden",
           padding: "12px",
+          paddingBottom: "10rem",
         }}
       >
         {list.length > 0
